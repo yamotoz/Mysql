@@ -1,4 +1,4 @@
-para criar um banco de dados no my sql precisamos do seguinte comando
+⭐️para criar um banco de dados no my sql precisamos do seguinte comando
 criação do banco: create database banco;
 create table if not exists bancoteste(
 id int not null auto_increment,                 # isso é para criar a chave primaria
@@ -11,7 +11,7 @@ primary key (id);                               # isso é para definir a chave p
 
 
 
-Para inserir valores dentro da tabela precimos usar o insert into
+⭐️Para inserir valores dentro da tabela precimos usar o insert into
 
 tipo:
 insert into bancoteste values 
@@ -36,7 +36,7 @@ use bancoteste,   desc/describe bancoteste, select * from bancoteste
 
 
 
-Comando relacionados ao alter table(serve para mudar a tabela e modificar os dados da coluna)
+⭐️Comando relacionados ao alter table(serve para mudar a tabela e modificar os dados da coluna)
 
 
 Mudar nome: 
@@ -63,7 +63,7 @@ Para apagar a coluna use:
 drop column profissao;
 
 
-Agora vamos aprender sobre Update, DELETE e Truncate
+⭐️Agora vamos aprender sobre Update, DELETE e Truncate
 o update serve para setar um valor especifico na tabela
 
 um exemplo claro é esse:
@@ -93,7 +93,7 @@ exemplo de uso
 truncate table bancoteste
 
 
-Agora vou falar sobre o select, tu vai usar da seguinte forma
+⭐️Agora vou falar sobre o select, tu vai usar da seguinte forma
 
 select nome, nascimento, carga from bancoteste                            # aqui tu vai selecionar só nome, nascimento e carga do bancoteste
 where ano = 2016                                                          # só vai filtrar do ano 2016
@@ -126,5 +126,21 @@ select max(nome) from curso                              # serve para ver o tota
 
 
 
+⭐️Ultima aula de select vamos fazer o seguinte:
 
+OBS:Distinct serve exclusivamente para distinguir certas linhas como uma pessoa de 32 anos, se eu n quiser mais ver ela use o distinct.
+OBS: Caso voce queira agrupar esses grupos faça o seguinte:
+
+select carga from cursos
+group by carga;                                                  isso vai fazer com que voce agrupe tudo que se relaciona a cargas.
+
+
+Agora para melhorarmos ainda mais vamos usar a agrupamento & agregação
+da seguinte forma
+
+select from carga count(nome) from cursos
+group by carga;
+
+aqui esta uma das atividades que fiz no curso
+select nome, altura,peso from gafanhotos where peso > 100 and altura > 1.93        aqui eu agrupei geral com mais de 100 kilos e com media da altura da galera e peguei os acima da media
 
