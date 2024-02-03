@@ -139,8 +139,28 @@ Agora para melhorarmos ainda mais vamos usar a agrupamento & agregação
 da seguinte forma
 
 select from carga count(nome) from cursos
+
+
+select nome, altura,peso from gafanhotos where peso > 100 and altura > 1.93        aqui eu agrupei geral com mais de 100 kilos e com media da altura da galera e peguei os acima da media
+
+
+
+⚿⭐️ Modelo relacional
+
 group by carga;
 
 aqui esta uma das atividades que fiz no curso
-select nome, altura,peso from gafanhotos where peso > 100 and altura > 1.93        aqui eu agrupei geral com mais de 100 kilos e com media da altura da galera e peguei os acima da media
 
+🔑chave primaria é o formato id ou idcurso ou cpf, algo unico
+
+🗝️A chave estrangeira é quando vamos relacionar tabelas, é quanto uma chave primaria de uma tabela vai fazer parte de outra tabela, fazendo assim que ela
+deixe de ser uma chave primaria e venha a existir como uma chave estrangeira
+
+Agora vamos aprender a dividir as chaves, entre 1 pra n(n é muitos), tipo um gerente para um funcionario, o 1 seria o gerente pois ele é quem vai comandar e o n os funcionarios
+se for por exemplo 1 para 1, marido e mulher
+se for por exemplo tambem n para n cliente e produto
+
+Para isso vamos pegar visao assim, se liga:
+1 para 1= id primarios de um vai pra um e do outro vai pra outro como chave estranheira.
+1 para n= o id primario do 1 vai para o n como chave estranheira.
+n para n = vai botar o id tanto do n tanto do outro n no meio deles, tipo cliente compra e produto o id do cliente e do produto vão para a compra.
