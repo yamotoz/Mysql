@@ -45,7 +45,7 @@ raname nome to usuario;
 
 Adicionar colunas:
 alter table bancoteste
-add column comidafavorita varchar(50);
+add column comidafavorita varchar(50);              voce tambem pode adicionar tanto o after ou first depois pra organizar melhor onde botar
 
 Para modificar os dados da coluna use:
 alter table bancoteste
@@ -160,7 +160,37 @@ Agora vamos aprender a dividir as chaves, entre 1 pra n(n é muitos), tipo um ge
 se for por exemplo 1 para 1, marido e mulher
 se for por exemplo tambem n para n cliente e produto
 
+
 Para isso vamos pegar visao assim, se liga:
 1 para 1= id primarios de um vai pra um e do outro vai pra outro como chave estranheira.
 1 para n= o id primario do 1 vai para o n como chave estranheira.
 n para n = vai botar o id tanto do n tanto do outro n no meio deles, tipo cliente compra e produto o id do cliente e do produto vão para a compra.
+
+⭐️Agora vamos ver como se usa o join, cuida pai.
+OBS: Os exemplos que utilizarei aqui em baixo é referente a uma aula do curso em video do professor guanabara.
+
+primeiramente vamos adicionar uma coluna que sera a chave estranheira
+usaremos:
+alter table gafanhotos add column cursopreferido int;       se liga que o cursopreferido é a chave estranheira
+
+Agora para setar que ela é uma chave estrangeira usaremos
+
+alter table gafanhotos
+add foreing key(cursopreferido)
+references cursos(idcursos);
+
+Beleza, depois desse comando a gente setou a chave primaria, para conferir ela deve ter um MUL na tabela
+
+obs: Join significa em sql junção
+
+Agora para fazer-mos a ligação dessa tabela vamos fazer o seguinte:
+
+select gafanhotos.nome, gafanhotos.cursopreferido,cursos.nome, cursos.ano 
+from gafanhotos an g join cursos an c                                                     agora caso queira vc pode simplesmente trocar o gafanhotos por g na linha de cima
+on cursos.idcurso = gafanhotos.cursopreferido                                             isso é para filtrar que será apenas os que tem ligação e não mostrar tudo(on)
+
+Agora assim, caso voce queira ver todos que estão em ligação de tabelas e os que tbm não estão faz o seguinte
+
+select gafanhotos.nome, gafanhotos.cursopreferido, cursos.nome, cursos.ano
+from gafanhotos left outer join cursos                                              a partir dessa linha vc vai ver os que tem um curso favorito e os que não tem um curso favorito
+on cursos.idcursos = gafanhotos.cursopreferido
