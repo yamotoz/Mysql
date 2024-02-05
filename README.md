@@ -189,8 +189,48 @@ select gafanhotos.nome, gafanhotos.cursopreferido,cursos.nome, cursos.ano
 from gafanhotos an g join cursos an c                                                     agora caso queira vc pode simplesmente trocar o gafanhotos por g na linha de cima
 on cursos.idcurso = gafanhotos.cursopreferido                                             isso é para filtrar que será apenas os que tem ligação e não mostrar tudo(on)
 
-Agora assim, caso voce queira ver todos que estão em ligação de tabelas e os que tbm não estão faz o seguinte
+
+
+
+
+⭐️Agora assim, caso voce queira ver todos que estão em ligação de tabelas e os que tbm não estão faz o seguinte
 
 select gafanhotos.nome, gafanhotos.cursopreferido, cursos.nome, cursos.ano
 from gafanhotos left outer join cursos                                              a partir dessa linha vc vai ver os que tem um curso favorito e os que não tem um curso favorito
 on cursos.idcursos = gafanhotos.cursopreferido
+
+
+⭐️⭐️⭐️Final
+
+Aqui vamos fazer uma ligação de n para n vamos fazer o seguinte
+
+create table ganahotos_assiste_curso(
+id int not null auto_increment,
+data date,
+idgafanhotos int,                               essa é a criação da chave estranheira
+idcurso int,                                    essa é a outra, vamos setar as duas agora com:
+primary key(id),
+foreing key(idgafanhotos) references gafanhotos(id)
+foreing key(idcurso) references cursos(idcurso)
+) default charset= utf8;
+
+agora voce vai insesrir na tabela ganahotos_assiste_curso alguns dados
+
+logo após vamos lincar as 3 tabelas em suas respectivas tabelas da seguinte forma
+
+select * from gafanhotos g                   aqui selecionei tudo mais vc pode selecionar por nome, id, etc tipo g.nome, c.nome
+join ganahotos_assiste_curso a
+on g.id = a.idgafanhotos
+join cursos c                               aqui vamos ligar com quais cursos o meliante anda fazendo
+on a.idcurso = c.idecurso                   aqui lincamos os id das duas colunas
+
+e logo mais é isso galerinha, um beijo e um queijo hihi.
+
+
+
+*  #######  #######  ##   ##  ######   ###  ##  #######           #######  #######           #######  #######  #######  #######  ####### *
+*                ##  ##   ##    ##     #### ##                         ##                         ##       ## *
+*  ##       #######  #######    ##     ## ####  ##   ##           ##   ##  ####              #######  ##   ##  #######  ####     ####### *
+*  ##       ##  ##        ##    ##     ##  ###  ##    #           ##   ##  ##                ##  ##   ##   ##       ##  ##            ## *
+*  #######  ##   ##  #######  ######   ##   ##  #######           #######  ##                ##   ##  #######  #######  #######  ####### *
+
